@@ -1,0 +1,37 @@
+## Cow Transport Writeup
+
+#### Analysis of Greedy vs Brute Force Algorithm
+
+The functions greedy_cow_transport() and brute_force_cow_transport() were each tested on
+'ps1_cow_data.txt'. Each function was tested 5 times and the run time was averaged.
+
+An additional helper function get_list_weight() was written to compute the total weight
+for a trip (sub lists within a partition).
+
+#### Run time
+
+The greedy algorithm returns a solution essentially immediately in all cases, whereas the
+brute force algorithm averaged ~0.8 seconds. The brute force algorithm is quite a bit slower
+than the greedy algorithm given the small number of cows. The difference in performance for
+a number a small as only 10 cows shows the benefits of a greedy algorithm.
+
+The get_partitions function is the bottleneck here, as it has exponential-ish time complexity.
+Experimentation showed that get_partitions() slowed considerably when the list of
+elements to partition reached ~12-13 elements.
+
+Note that the brute force implementation discards invalid solutions (i.e. cows are too heavy)
+immediately, and also tracks the current minimum number of trips. Partitions corresponding to
+the minimum are then extracted
+
+#### Solutions
+
+The **greedy algorithm found a minimum solution containing 6 total trips, while the brute force
+algorithm found a solution containing 5 total trips**. The list of cows contained three cows
+with a weight of 2. *All* brute force solutions used a trip containing exactly two of these three
+cows. The greedy algorithm was not able to access this solution since choosing the heaviest cows first
+did not leave enough room to choose two lighter cows.
+
+It is possible that there are distributions of weights for which packing lighter cows is suboptimal,
+in which case the greedy algorithm may find the optimal solution. Additionally, the greedy solution
+was close to the optimal solution (one more trip), thus for a large number of cows the speed of the
+greedy algorithm may be worthwhile
