@@ -62,11 +62,11 @@ def greedy_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
+
     # create sorted dict
     dict_copy = cows.copy() # copy dict
     weight_sorted = sorted(dict_copy.items(), key=lambda x: x[1], reverse=True) # sort dict by weight
-    cows_dict_sorted = {name: dict_copy[name] for name, weight in weight_sorted} # sorted dict
+    cows_dict_sorted = {name: dict_copy[name] for name, weight in weight_sorted} # sorted dict. not needed?
 
     # create empty master list to contain all transport sub-lists
     master_list =[]
