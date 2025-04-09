@@ -1,0 +1,43 @@
+# Fastest Path Around MIT Writeup
+
+The goal of this assignment was to use directed graphs to identify possible paths for moving around
+the MIT campus. The graph consists of nodes representing buildings and weighted edges connecting buildings.
+The edges are directed and the weights are integer values indicating the total distance between two buildings
+and the outdoor distance between two buildings.
+
+
+## Problem 1: Data Structures
+
+The nodes, graphs, and edges were represented using data structures within the following classes:
+*Node*, *Edge*, *WeightedEdge*, and *Digraph*. The Node and Edge classes were provided, while skeleton
+code was provided for WeightedEdge and Digraph. Problem 1 consisted of completing the skeleton code,
+which consisted of implementing the *__str__* method to print instances of WeightedEdge and implementing
+methods to add nodes and edges to instances of the Digraph class.
+
+
+## Problem 2: Building the Campus Map
+
+Information for campus buildings (building number, distances between buildings) was stored in a formatted text
+file. Information was stored in the following format:
+
+a b c d
+
+Where a and b represent the start and destination building, respectively. Values c and d represent the total
+distance and outdoor distance between buildings, respectively. A function was written to load data from a text
+file and build a directed graph (instance of Digraph) representing the MIT Campus
+
+
+
+## Problem 3: Find the Shortest Path using Optimized Depth First Search
+
+The completed data structures and map loading method were used to find the best path between two buildings.
+*Best* is defined as a path connecting two buildings subject to a maximum distance spent outdoors or a maximum
+total distance.
+
+The optimal path was found using a recursive depth first search. A helper function was written to find the optimal
+path subject to a constraint of total distance outdoors. An additional function was completed that also added total
+distance as a constraint.
+
+I also wrote a function to compute the total weight of a path. This could be a useful attribute to add to the
+Edge or Digraph classes.
+

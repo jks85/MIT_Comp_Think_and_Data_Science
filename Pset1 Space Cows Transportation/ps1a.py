@@ -39,6 +39,7 @@ def load_cows(filename):
     return name_weight_dict
 
 
+
 # Problem 2
 def greedy_cow_transport(cows,limit=10):
     """
