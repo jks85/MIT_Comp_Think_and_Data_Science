@@ -1,0 +1,36 @@
+### Summary
+The provided code for problem set 3 included some issues that required fixing to complete the assignment. These errors
+and the corresponding changes/fixes are documented below
+
+### Errors
+1. Error in ps3_tests_f16.py
+2. Error in ps3_visualize.py
+3. Error in ps3.py
+
+
+### Fixes
+1. Error when running ps3_tests_f16.py
+
+- I was unable to run the unit tests to check problems 1 and 2. This appears to be due to the use of the `imp` module
+being deprecated in favor of `importlib`. As such the unit tests cannot be complied as intended (I think?)
+- I was not able to fix this, but the provided code includes animations/visualizations that allowed problems 1 and 2 to
+be checked visually after completing problem 3.
+
+2. ps3_visualize.py
+
+This file had a reference error when loaded that prevented the code from compiling.
+
+- 'import time' (line 3) threw a reference error on line 147 b/c 'time' referenced the time module and the time
+attribute of the RobotVisualization class
+- resolved by commenting out 'import time' (line 8) and added 'from time import sleep'
+- I also modified the update() method in the RobotVisualization class by commenting out line 147
+'time.sleep.(self.delay)' and adding a line 'sleep(self.delay)'
+
+
+3. ps3.py
+
+The function show_plot_room_shape() threw a type error when initially run (float vs int variable)
+
+- On line 645 the room height is computed via division, resulting in a float
+- Resolved the error by casting the the height variable to an integer. This could have also been achieved using integer
+division (e.g. area//width)

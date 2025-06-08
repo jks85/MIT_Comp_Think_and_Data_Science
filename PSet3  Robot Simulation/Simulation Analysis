@@ -1,0 +1,51 @@
+### Analysis of Robots
+
+- See the images
+
+1)How does the performance of the two robot types compare when cleaning 80% of a 20x20 room?
+
+Examining the plot **Comparing Robots** two things are immediately noticeable:
+
+- A given number of faulty robot(s) take much longer to clean the room than
+the same number of standard robots
+- The time decreases quickly as robots of either type are added and levels off
+
+Both points are reasonable and expected. We expect FaultyRobot to take longer given its movement strategy since when in
+a faulty state it changes direction and does not move or clean. There is a 15% chance of a faulty state so the robot has
+a non-trivial chance of malfunctioning, thereby delaying cleaning. That said the difference in cleaning time between a
+single StandardRobot and a FaultyRobot was perhaps surprisingly large with the FaultyRobot taking ~8x as long to finish
+cleaning (~20,000 time steps for FaultyRobot).
+
+Adding even a single robot significantly improved the performance of both robot classes. However, the graph scale
+distorts the relative improvement in performance. Accounting for the large disparity in the cleaning time, each
+additional robot appears to have a similar *relative* effect for both classes (based on eyeballing the graphs).
+
+The StandardRobot appears to experience diminishing returns beyond 6 robots, but again this may
+be overstated somewhat due to the graph scale. However, the FaultyRobot benefits more from adding additional robots.
+This makes sense as each additional FaultyRobot greatly increases the probability that *some* robot works properly at
+any given time step.
+
+We also see from the plot that ~9 or 10 FaultyRobots perform similarly to a single StandardRobot. I would have expected
+fewer FaultyRobots were required to approximate the performance of a single StandardRobot. The probability of at least 1
+FaultyRobot working is 1-0.15^n where n is the number of faulty robots and 0.15 is the probability a robot is faulty at
+a given time step. Even for two FaultyRobots the probability that at least 1 robot works at a given time step is ~0.98.
+Yet, the plot shows that 2 FaultyRobots still take much longer to clean than a single StandardRobot, ~5x as long. This
+may be explained by the fact that the FaultyRobot chooses a new direction if in a faulty state. This new direction
+may result in an invalid position, which then requires another direction to be chosen. Therefore FaultyRobot potentially
+experiences further delays.
+
+
+2) How does the performance of the two robot types compare when two of each
+      robot cleans 80% of rooms with dimensions
+      10x30, 20x15, 25x12, and 50x6?
+
+Examining the plot **Comparing Robots and Room Shape** StandardRobot performs identically regardless of the room shape,
+or *aspect ratio* (width/length). FaultyRobot appears to perform optimally when the aspect ratio is ~1 (i.e. when the
+room is square). Additionally, the number of steps appears to increase linearly with the aspect ratio once the ratio is
+greater than 1. This was not necessarily expected, but can be explained by the movement strategy of FaultyRobot.
+
+When comparing a square room vs a more narrow room, the latter will have fewer valid directions in which a robot can
+move. A direction in the more narrow room is more likely to move the robot into/through a wall.
+
+Note that we would expect FaultyRobot to perform similarly when the aspect ratio approaches 0 as when it becomes
+unbounded. Consider a 1 x 300 room vs a 300 x 1 room.
