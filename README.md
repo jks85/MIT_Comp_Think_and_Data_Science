@@ -6,5 +6,6 @@ Each folder contains a brief writeup of the problem set. The names and goals of 
 
 1. Pset1: dynamic programming, memoization, optimization
 2. Pset2: graph traversal, breadth first search, optimization, OOP
+3. Pset3: simulation, random walks, OOP
 
 
