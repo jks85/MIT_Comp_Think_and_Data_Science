@@ -642,7 +642,7 @@ def show_plot_room_shape(title, x_label, y_label):
     times1 = []
     times2 = []
     for width in [10, 20, 25, 50]:
-        height = int(300/width)
+        height = int(300/width) # cast to integer to fix compiling error in provided  code
         print ("Plotting cleaning time for a room of width:", width, "by height:", height)
         aspect_ratios.append(float(width) / height)
         times1.append(run_simulation(2, 1.0, 1, width, height, 3, 0.8, 200, StandardRobot))
