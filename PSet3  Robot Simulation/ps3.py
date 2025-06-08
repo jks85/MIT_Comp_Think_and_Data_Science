@@ -549,20 +549,7 @@ def run_simulation(num_robots, speed, capacity, width, height, dirt_amount, min_
 #     print('avg time steps:' + str(avg_num_steps_list[i]))
 #
 #
-# # testing nxn squares; 1 robot, dirt 2
-# edge_length_list = [2**n for n in range(1,5)]
-#
-# avg_num_steps_list = []    # hold avg number of steps
-#
-# for edge in edge_length_list:
-#     avg_steps = run_simulation(1, 1.0, 1, edge, edge, 2, 1.0, 10, StandardRobot)
-#     avg_num_steps_list.append(avg_steps)
-#
-# print("sim 2: 1 robot, n x n squares for n = 2, 4, . . .32", "twice as much dirt")
-#
-# for i in range(len(avg_num_steps_list)):
-#     print('avg time steps:' + str(avg_num_steps_list[i]))
-#
+
 
 
 # single robot sims
