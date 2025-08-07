@@ -1,0 +1,59 @@
+
+
+
+results of simple patient (no antibiotics)
+
+The bacteria population growth appears to follow a logistic curve. The population briefly grew rapidly (exponentially)
+initially, but quickly began to grow at a decreasing rate. This growth pattern likely occurs since the reproduction
+probability decreases as the population density increases. This simulation used a birth rate of 10% and a death rate of
+2.5% with a birth probability of 10% and a death rate of 2.5%. Note that the birth and reproduction probabilities are
+distinct.
+
+
+Results of treated patient in Simulation A
+
+This simulation included a period in which a patient was treated with antibiotics and bacteria that could develop
+resistances to said antibiotics. The graph plots the total and resistant population throughout the simulation. The
+bacteria population was allowed to grow without treatment for the first 40% of the simulation (150 time steps) after
+which the antibiotic was introduced. Initially both the total and resistant populations increased at similar rates, with
+the total population being much larger. Both populations increased at a slightly decreasing rate. Prior to the
+introduction of the antibiotic, the resistant population quickly peaked and began to decrease. The total population
+increased until the antibiotic was introduced.
+
+After introduction of the antibiotic, the total population quickly converged to the resistant population (simulation
+specs indicated that non-resistant bacteria could not survive) and matched it after. Both populations began to increase
+slowly again, following a growth pattern similar to the late stage behavior of the simulation without antibiotics.
+
+The population stabilized slightly below the initial peak of the resistant bacteria. The exact results are likely to due
+to the relative values of the birth, death, and mutation probabilities which were 30%, 20%, and 80% in this simulation.
+The net difference in birth and death rate explains the general increase and the high mutation rate explains the growth
+in population even after introduction of the antibiotic. However, despite a very high mutation rate the bacteria
+population appears asymptotic around ~20% of the maximum population.
+
+
+
+
+Results of treated patient in Simulation B
+
+Simulation B had the same design as simulation A with an antibiotic introduced ~40% of the way into the trial. However,
+the parameters were altered with a birth probability lowered to 17%, while the death and mutation probabilities remained
+at 20% and 80% respectively. Despite having a smaller birth rate than death rate, the populations grew initially;
+however, the scale is misleading. The total population peaks at less than 20% of the max population, which is well below
+the peak of simulation A. The initial increase was likely due to the high probability of reproduction when the
+population density was low at the beginning of the simulation. However, both the total and resistant population began to
+decline well before the antibiotic was introduced and the introduction of the antibiotic quickly drove both populations
+to 0.
+
+
+Confidence Interval Results
+
+The results indicate the 95% confidence interval for the mean population of bacteria in at time 299 for each simulation.
+
+Simulation A
+95% CI for total population at t = 299: (183.53,204.11)
+95% CI for resistant population at t = 299: (183.53,204.11)
+
+
+# Simulation B
+95% CI for total population at t = 299: (0.0,0.0)
+95% CI for resistant population at t = 299: (0.0,0.0)
