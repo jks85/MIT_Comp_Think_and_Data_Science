@@ -1,0 +1,131 @@
+## Global Warming Analysis
+
+
+### Part A. Daily vs Annual Temperature in NYC
+#### Jan 10th vs Annual Avg
+
+Analyzing the daily temperature in New York City on January 5th yielded a quite noisy data set. While the data
+appeared to possibly have a positive slope, the r^2 of 0.05 indicated little association between the year and
+temperature. Superficially this could suggest that temperatures have not changed over time. The ratio of standard error
+to slope of 0.614 corresponds to an amount of variation in temperature that would not be statistically significant.
+However, this is only one day of the year...
+
+Analyzing the average temperature in NYC for 1961-2009 shows a slightly different story. Here the
+scatterplot seemed to display a more clear positive, linear relationship between year and temperature. The r^2 statistic
+of 0.189 is not alarmingly high by any means, but the ratio of the standard error to slope is much smaller in this case
+and corresponds to statistically significant result.
+
+The noise in both datasets demonstrates the inherent volatility of temperature. In the case of daily temperatures it
+seems that even within the winter season, daily temperatures fluctuate considerably. On the yearly scale noise in
+temperatures may be affected by seasonal fluctuations.
+
+Overall, while the Jan 10th temperature data doesn't indicate a change in temperature, the yearly analysis presents
+stronger evidence in favor of increased temperature. The average data considers a larger sample of days, taking each day
+of the year from 1961-2009 rather than a single day
+
+### Part B. Average City Temperature
+#### Annual Temperature in Major USA Cities
+
+The scatterplot for Year vs Avg City Temperature displays a strong, positive association and shows stronger
+evidence of global warming during the timespan in the training data. In addition to the plot itself showing a stronger
+relationship, the model produced a much higher r^2 of 0.746 and a much lower standard error to slope ratio. These
+statistics strengthen the case that temperatures have increased over time. The scatter of points around the regression
+line suggests that the relationship is not actually be linear despite the strong fit.
+
+Analyzing New York City alone indicated some evidence for an increase in average temperature. The new plot demonstrates
+increased average temperatures across all US cities in the data set. The larger sample of cities provides stronger
+evidence; however, the cities are also located in a variety of geographic locations.
+
+Had we only used 3 cities we would expect to also see an increase in avg temperature over time, but the results would be
+more volatile due to a smaller sample size. We could see much higher or lower increases in average temperature depending
+on which cities were chosen. This variability would likely decrease the r^2 value and increase the std error to slope
+ratio (i.e. less reliable results). If we chose 100 cities we would expect the opposite to occur.
+
+If cities from the same region were chosen, we could expect to see less variation in temperature within the cities.
+However, the overall association between year and temperature could deviate considerably from the overall sample based
+on particular factors of the region in question. Specific regions may have experienced smaller or larger changes in
+average temperature in compared to the entire sample of cities.
+
+### Part C. Annual Temperature: Moving Averages
+#### City Temperature-- 5 Year Moving Average
+
+A 5 year moving average for annual temperature across cities was computed for the training interval.
+Plotting the 5 year moving average also shows a strong association between Year and Temperature-- the strongest so far.
+The r^2 value of 0.925 is extremely high and the std error to slope ratio is very low. That being said the observations
+appear to oscillate about the line. As a result, while there is a strong evidence of a strong, positive association
+between Year and Temperature, the plot suggests a non-linear relationship.
+
+The oscillations indicate some kind of natural pattern in average yearly temperature variation, but they may represent
+random fluctuations. The latter seems unlikely although it is unclear what mechanism might cause temperature to
+fluctuate in a consistent manner. Possibly some natural phenomenon...
+
+In either case it appears that the average temperature in the training data has in fact increased over the time span in
+the training data. Even though the plot does not form a line, the linear fit remains "strong" because the line captures
+the increase in average temperature to a meaningful extent. We could use the line to establish the the temperature has
+generally increased, but it may not suffice to predict future temperatures...
+
+### Part D. Predicting the Future
+#### Higher Degree Models
+
+Here additional models of degree 2 and degree 20 were fit to the data and compared to the degree 1 model from part C.
+The r^2 values of the models were 0.945 and 0.972 respectively, while the standard error to slope ratios were -3.08 and
+4x10^53 (!!!). Assuming no calculation errors, these ratios are unusual-- in particular the degree 20 model ratio is
+alarmingly high. These numbers suggest that while strong, the fit may due to chance despite the high r^2 values. That
+being said more investigation is needed as to the interpretation of the standard error to slope ratio when applied to
+higher degree models.
+
+The degree 20 model has the strongest r^2. This is expected as the higher degree allows the function to map a curve more
+closely to changes in the training data. However, overfitting is a major concern. Based on the r^2, the std error slope
+ratios, and the plot itself the linear model seems to be the best fit.
+
+#### Testing Models: RMSE
+
+When testing models the Root Mean Squared Error (RSME) was computed rather than the r^2. This choice was made due to the
+RSME retaining the scale of errors, while r^2 is standardized. Additionally, the course suggested that RMSE is generally
+preferred over r^2 when testing out of sample data performance. This is due to interpretations and properties r^2
+failing to translate when applied to models evaluated on data outside
+
+
+The scatterplots of test data indicate that the degree 1 model outperforms both higher degree models. In particular the
+training models for the degree 2 and degree 20 models were quite poor. Both of these models overestimated the test data
+for *all* observations* indicating substantial bias. The RMSE values were
+
+- 0.088 (Degree 1)
+- 0.212 (Degree 2)
+- 1.491 (Degree 20)
+
+In addition to appearing most reasonable based on the scatterplots, the linear model also has the lowest RMSE by a
+decent margin. However, the RMSE must be compared to the scale of data. Relevant statistics of the average 5 year moving
+average in the test data set are
+
+- mean: 16.94 degrees Celsius
+- min: 16.75 degrees Celsius
+- max: 17.09 degrees Celsius
+
+With a data range of ~0.34 degrees Celsius we see that the RMSE of the degree 2 model is fairly large, while the RMSE of
+the degree 20 model is extremely large-- over 4x the data range. The RMSE of the linear model appears reasonably small,
+but warrants deeper analysis. We can safely conclude that the linear model performs best on test data by a wide margin
+and that the higher degree models suffer from aforementioned overfitting.
+
+
+*The r^2 value may have been negative for these models which indicates that the model does performs worse than simply
+predicting the average. This is impossible when a model is used to evaluate *in sample* error. This scenario indicates
+why one may prefer to use RMSE over r^2 on out of sample data.
+
+#### Temperature Variation
+
+Additionally, the claim that temperatures had become more volatile by analyzing the standard deviation of the 5 year
+moving temperature average within the training data. Surprisingly, the scatterplot indicated a decrease in the standard
+deviation of temperature. However, the r^2 was relatively low and the scatterplot and degree 1 model suggest bias within
+the residuals. Still, there does seem to be evidence of a meaningful decrease in the standard deviation even if the
+result is not appropriately modeled by a linear fit.
+
+That being said analyzing the standard deviation of temperature averages may not properly reflect overall volatility. In
+particular, the 5 year moving average would mitigate the impact of extreme temperatures in the sample. It is certainly
+possible for the most *extreme* temperatures to have become hotter or colder while the average temperatures became more
+consistent.
+
+It would be more appropriate to analyze the minimum and maximum temperatures over time, perhaps some portion of upper
+and lower percentiles. For instance we could average the lowest 5% of temperatures and highest 5% of temperatures and
+fit these values over the training sample. Then following the method used previously we could also examine a moving
+average.

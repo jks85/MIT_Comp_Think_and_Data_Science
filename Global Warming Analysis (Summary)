@@ -1,0 +1,56 @@
+## Global Warming Analysis (Summary)
+
+### Summary
+
+#### Code
+
+The assignment provided helper code including the class `Climate` which processed a .csv file containing temperature
+the temperature data used in the analysis. The code used regular expressions to construct a dictionary mapping cities
+and dates to temperatures. With the exception of the `se_over_slope` function, all methods outside of the climate class
+were implemented as part of the assignment. This included eight methods for plotting data, generating data statistics,
+generating model statistics, and evaluating models on training and testing data. The methods were
+
+- `generate_models`: generate model of specified degree
+- `r_squared`: compute r^2 value
+- `evaluate_models_on_training`: plot data, plot model fit, and report summary stats on training data
+- `gen_cities_avg`: compute average temp across a group of cities
+- `moving_average`: compute moving average over a specified time span
+- `rsme`: compute root mean squared error
+- `evaluate_models_on_testing`: plot data, plot model fit, and report summary stats on testing data
+-`gen_std_devs`: compute a particular standard deviation of temps
+
+The python library `pylab`-- now `numpy`-- was used for modeling and data analysis. The assignment is rather old hence
+the use of `pylab`. However, all functions used in the assignment have the same functionality in `numpy`. The library
+`re` was also used as part of the `Climate` class, but again this was provided in the helper code.
+
+#### Average Temperature
+In order to asses claims related to global warming temperature in major USA cities was analyzed over the course of
+1960-2016. The period 1960-2009 (inclusive) formed the training data while the period (2010-2016) formed the test data.
+The final date in the data set was 12/31/2015. Temperature was measured in degrees Celsius
+
+Temperatures were analyzed at the daily level and annual level for New York City, and then for the average of major US
+cities-- including yearly averages and 5 year moving averages.
+
+The training data was used to fit degree 1, degree 2, degree 20 models. The code generates a number scatterplots
+visualizing year vs temperature and evaluates models fit to training and/or test data.
+
+
+#### Temperature Variation
+
+Additionally, the standard deviation of 5 year moving average temperature was analyzed to explore claims of increased
+variation in temperature. A degree 1 model was fit to the training data.
+
+#### Conclusions
+
+Analysis showed evidence of global warming in the training and test data. The linear model provided the best predictive
+model out of sample with the higher degree models suffering from considerable overfitting. In particular the degree 20
+model performed particularly poorly out of sample despite performing well in sample-- this behavior was expected.
+Notably, both the degree 2 and degree 20 model performed worse than random on out of sample data (e.g. guessing the
+average).
+
+The limited analysis of temperature variation showed a decrease in average temperature volatility in the training set.
+This result was surprising given anecdotal evidence of especially hot or cold seasons. However, the writeup discusses
+the limitations of the current analysis. Specifically, analyzing the 5 year moving average does not examine the behavior
+of extreme values in the data set (e.g. min and max temperatures) and may even supress the behavior of extreme
+temperatures. As a result, the current analysis of temperature variation indicates very little and a more direct
+examination of extreme temperatures (e.g. max or min temperatures) is suggested.
